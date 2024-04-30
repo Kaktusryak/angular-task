@@ -1,0 +1,11 @@
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <app-user *ngFor="let user of users; index as i; first as isFirst" [id]="i" [name]="user.name"
+                    [lastName]="user.lastName" [dateOfBirth]="user.dateOfBirth" [education]="user.education"
+                    [role]="user.role" [position]="user.position"></app-user>
+            </ul>
+        </div>
+    </div>
+</section>

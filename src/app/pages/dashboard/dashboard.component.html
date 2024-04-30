@@ -1,0 +1,22 @@
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h2 class="text-center pb-3">Dashboard page</h2>
+        </div>
+    </div>
+    <div *ngIf="authService.currentUserSignal()?.role==='Admin'" class="row justify-content-center ">
+        <div class="col-md-6 btn-group">
+            <button class="btn btn-primary" (click)="handleAdminClick()">Admin page</button>
+        </div>
+    </div>
+    <div *ngIf="authService.currentUserSignal()!==null && authService.currentUserSignal()!==undefined"
+        class="row justify-content-center ">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <app-report *ngFor="let report of reports; index as i; first as isFirst" [id]="report.id"
+                    [name]="report.name" [active]="report.active" [users_resolved]="report.users_resolved"
+                    [image_url]="report.image_url"></app-report>
+            </ul>
+        </div>
+    </div>
+</section>
