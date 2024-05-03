@@ -22,7 +22,7 @@ export class DashboardComponent {
   http = inject(HttpClient);
 
   reports: any;
-  token: string = '';
+  
 
   ngOnInit(): void {
     this.http

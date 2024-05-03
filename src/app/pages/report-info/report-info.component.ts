@@ -41,8 +41,6 @@ export class ReportInfoComponent {
   chartOptions: any;
 
   ngOnInit(): void {
-    console.log('info');
-
     this.params = this.params.append('id', this.reportId ? this.reportId : '');
 
     this.http

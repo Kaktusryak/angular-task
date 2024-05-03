@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { UserComponent } from '../../components/user/user.component';
 import { CommonModule } from '@angular/common';
+import { CSVDownloadService } from '../../services/csvdownload.service';
 
 @Component({
   selector: 'app-admin',
@@ -19,10 +20,12 @@ import { CommonModule } from '@angular/common';
 export class AdminComponent {
   router = inject(Router);
   authService = inject(AuthServiceService);
+  csvService = inject(CSVDownloadService)
   http = inject(HttpClient);
 
+
   users: any;
-  token: string = '';
+  
 
   ngOnInit(): void {
     this.http
@@ -30,10 +33,19 @@ export class AdminComponent {
       .subscribe({
         next: (res) => {
           this.users = res;
+          console.log(res)
         },
         error: () => {
           this.authService.currentUserSignal.set(null);
         },
       });
   }
+  handleDownloadAll():void{
+    this.csvService.downloadFile(this.users,'users')
+  }
+  
+  
+
+   
+
 }

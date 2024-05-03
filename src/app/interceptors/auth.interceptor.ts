@@ -7,7 +7,7 @@ export class authInterceptor implements HttpInterceptor{
   authService = inject(AuthServiceService)
 
   intercept(req:HttpRequest<any>,next:HttpHandler){
-    const token = this.authService.currentUserSignal()?.token || ''
+    const token = localStorage.getItem('token') || ''
     const newReq = req.clone({
       headers:req.headers.set('X-Token',token)
     })

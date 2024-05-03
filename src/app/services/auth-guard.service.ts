@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { AuthServiceService } from './auth-service.service';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { concatAll } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ class AuthGuardService {
     if(this.authService.currentUserSignal()?.role=='Admin'){
       return true
     }else{
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/dashboard')
       return false
     }
   }
