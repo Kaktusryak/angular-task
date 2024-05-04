@@ -1,6 +1,10 @@
 import { Component, Inject, inject, OnInit } from '@angular/core';
 import { AuthServiceService } from '../../services/auth-service.service';
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpHeaders,
+} from '@angular/common/http';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ReportComponent } from '../../components/report/report.component';
 import { Router } from '@angular/router';
@@ -10,38 +14,30 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [HttpClientModule, ReportComponent, CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit{
   router = inject(Router)
   authService = inject(AuthServiceService)
   http = inject(HttpClient)
 
-  reports: any
-  token: string = ''
+  reports: any;
+  
 
   ngOnInit(): void {
-    if (typeof localStorage !== 'undefined') {
-      // Access localStorage safely
-      this.token = localStorage.getItem('token') || '';
-      const headers = new HttpHeaders({
-        'X-Token': this.token || ''
-      });
-      this.http.get('https://user-assessment-api.vercel.app/api/userassessments', { headers: headers }).subscribe({
+    this.http
+      .get('https://user-assessment-api.vercel.app/api/userassessments')
+      .subscribe({
         next: (res) => {
-          this.reports = res
+          this.reports = res;
         },
         error: () => {
-          this.authService.currentUserSignal.set(null)
-        }
-
-      })
-    }
-
+          this.authService.currentUserSignal.set(null);
+        },
+      });
   }
 
   handleAdminClick(): void {
-    this.router.navigateByUrl('/admin')
+    this.router.navigateByUrl('/admin');
   }
-
 }

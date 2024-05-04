@@ -19,7 +19,6 @@ export class ReportComponent {
   @Input() id : any
 
   handleClick():void{
-    console.log(this.id)
     this.router.navigateByUrl('/dashboard/'+this.id)
   }
 

@@ -9,4 +9,6 @@ import { UserInterface } from '../interfaces/user-interface';
 export class AuthServiceService {
   constructor() { }
   currentUserSignal = signal<UserInterface | null | undefined>(undefined)
+
+  
 }
