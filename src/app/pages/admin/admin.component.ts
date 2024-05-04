@@ -36,7 +36,7 @@ export class AdminComponent {
           console.log(res)
         },
         error: () => {
-          this.authService.currentUserSignal.set(null);
+          this.authService.removeUser();
         },
       });
   }

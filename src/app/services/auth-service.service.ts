@@ -8,7 +8,24 @@ import { UserInterface } from '../interfaces/user-interface';
 })
 export class AuthServiceService {
   constructor() { }
-  currentUserSignal = signal<UserInterface | null | undefined>(undefined)
+  
+
+  setUser(token:string,name:string, role:string):void{
+    localStorage.setItem('token',token)
+    localStorage.setItem('name',name)
+    localStorage.setItem('role',role)
+  }
+  removeUser():void{
+    localStorage.removeItem('token')
+    localStorage.removeItem('name')
+    localStorage.removeItem('role')
+  }
+  getUserData(data:string):string{
+    return localStorage.getItem(data) || ''
+  }
+  
+  
+
 
   
 }

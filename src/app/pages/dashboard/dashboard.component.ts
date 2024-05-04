@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit{
           this.reports = res;
         },
         error: () => {
-          this.authService.currentUserSignal.set(null);
+          this.authService.removeUser()
         },
       });
   }

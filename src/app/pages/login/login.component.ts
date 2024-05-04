@@ -35,7 +35,7 @@ export class LoginComponent {
         .subscribe(response=>{
           localStorage.setItem('token',response.token)
           localStorage.setItem('name',response.first_name)
-          this.authService.currentUserSignal.set(response)
+          this.authService.setUser(response.token,response.first_name,response.role)
           this.router.navigateByUrl('/dashboard')
         })
     }

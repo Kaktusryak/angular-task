@@ -22,11 +22,12 @@ export class AppComponent {
   
   ngOnInit():void{
     
-    if(this.authService.currentUserSignal() === null || this.authService.currentUserSignal()===undefined){
-      if(this.router.url !=='/login'){
-        this.router.navigateByUrl('/login')
-      }
-    }
+    // if(this.authService.getUserData('token')!==''){
+    //   if(this.router.url !=='/login'){
+    //     alert('this worked')
+    //     this.router.navigateByUrl('/login')
+    //   }
+    // }
   }
 
   handleToLogin():void{
@@ -35,7 +36,7 @@ export class AppComponent {
 
   handleUnlog():void{
     localStorage.setItem('token','')
-    this.authService.currentUserSignal.set(null)
+    this.authService.removeUser()
     this.router.navigateByUrl('/login')
 
   }

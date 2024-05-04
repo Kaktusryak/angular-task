@@ -11,7 +11,7 @@ class AuthGuardService {
   constructor(private authService: AuthServiceService, private router:Router) { }
 
   canActivate():boolean{
-    if(this.authService.currentUserSignal()?.role=='Admin'){
+    if(this.authService.getUserData('role')=='Admin'){
       return true
     }else{
       this.router.navigateByUrl('/dashboard')

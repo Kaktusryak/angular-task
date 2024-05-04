@@ -20,6 +20,7 @@
     "@angular/router": "^17.3.0",
     "@canvasjs/angular-charts": "^1.2.0",
     "@canvasjs/charts": "^3.8.4",
+    "@ngrx/router-store": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",

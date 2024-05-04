@@ -5,9 +5,9 @@
         <h1>Author: Denys Shulman</h1>
       </div>
       <div class="btn-group col-md-4"
-        *ngIf="authService.currentUserSignal()!==null && authService.currentUserSignal()!==undefined">
+        *ngIf="authService.getUserData('token')!==''">
         <button (click)="handleUnlog()" type="button" class="btn btn-danger">Unlog from
-          {{authService.currentUserSignal()?.first_name}}</button>
+          {{authService.getUserData('name')}}</button>
         <button (click)="handleToDash()" type="button" class="btn btn-primary">Dashboard </button>
       </div>
     </div>
