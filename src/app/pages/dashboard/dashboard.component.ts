@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   router = inject(Router)
   authService = inject(AuthServiceService)
   http = inject(HttpClient)
