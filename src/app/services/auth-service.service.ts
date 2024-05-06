@@ -25,6 +25,14 @@ export class AuthServiceService {
   getUserData(data:string):string{
     return localStorage.getItem(data) || ''
   }
+  restoreUser():UserInterface{
+    return{
+      first_name:this.getUserData('name'),
+      last_name:this.getUserData('last_name'),
+      role:this.getUserData('role'),
+      token:this.getUserData('token')
+    }
+  }
   
   
 

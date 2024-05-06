@@ -31,9 +31,9 @@ export class DashboardComponent implements OnInit{
   name$?:Observable<string>//ngrx study
 
   constructor(){
-    this.store.select('user').subscribe(data=>{
-      console.log(data)
-    })
+    // this.store.select('user').subscribe(data=>{
+    //   console.log(data)
+    // })
   }
 
   // onIncrement(){

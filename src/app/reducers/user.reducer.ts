@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { UserInterface } from "../interfaces/user-interface";
-import { login, logout } from "../store/user.actions";
+import { login, logout, restore } from "../store/user.actions";
 
 
 export interface UserState{
@@ -27,6 +27,12 @@ export const userReducer = createReducer(initialState,
             user:null
         }
     }),
+    on(restore,(state,{user})=>{
+        return {
+            ...state,
+            user:user
+        }
+    })
 
 )
 

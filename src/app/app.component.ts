@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Store, StoreModule } from '@ngrx/store';
 import { UserInterface } from './interfaces/user-interface';
 import { Observable } from 'rxjs';
-import { logout } from './store/user.actions';
+import { logout, restore } from './store/user.actions';
 
 
 
@@ -39,12 +39,13 @@ export class AppComponent {
   
   ngOnInit():void{
     
-    // if(this.authService.getUserData('token')!==''){
-    //   if(this.router.url !=='/login'){
-    //     alert('this worked')
-    //     this.router.navigateByUrl('/login')
-    //   }
-    // }
+    if(this.authService.getUserData('token')!==''){
+      this.store.dispatch(restore({user:this.authService.restoreUser()}))
+    }
+    this.user$?.subscribe(data=>{
+      console.log('Confirming user')
+      console.log(data)
+    })
   }
 
   handleToLogin():void{
