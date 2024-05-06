@@ -41,6 +41,8 @@ export class AppComponent {
     
     if(this.authService.getUserData('token')!==''){
       this.store.dispatch(restore(this.authService.restoreUser()))
+    }else{
+      this.router.navigateByUrl('/login')
     }
     this.user$?.subscribe(data=>{
       console.log('Confirming user')
