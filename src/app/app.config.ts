@@ -5,9 +5,10 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
-import { StoreFeatureModule, StoreModule, provideStore } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { counterReducer } from './store/counter.reducer';
+import { provideStore } from '@ngrx/store';
+import { metaReducers, reducers } from './reducers';
+
+
 
 
 
@@ -17,7 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     { provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true },
-    importProvidersFrom(StoreModule.forRoot({}),StoreModule.forFeature('counter',counterReducer))
+    provideStore(reducers,{metaReducers})
+    
   ]
     
 };

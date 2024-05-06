@@ -4,8 +4,11 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './store/counter.reducer';
+import { Store, StoreModule } from '@ngrx/store';
+import { UserInterface } from './interfaces/user-interface';
+import { Observable } from 'rxjs';
+import { logout } from './store/user.actions';
+
 
 
 
@@ -22,6 +25,16 @@ export class AppComponent {
   authService = inject(AuthServiceService)
   http = inject(HttpClient)
   router= inject(Router)
+
+  store = inject(Store)
+
+  user$?:Observable<UserInterface>
+  constructor(){
+    this.user$ = this.store.select('user')
+    // console.log(this.user$.subscribe(data=>{
+    //   console.log(data)
+    // }))
+  }
 
   
   ngOnInit():void{
@@ -42,6 +55,7 @@ export class AppComponent {
     localStorage.setItem('token','')
     this.authService.removeUser()
     this.router.navigateByUrl('/login')
+    this.store.dispatch(logout())
 
   }
 

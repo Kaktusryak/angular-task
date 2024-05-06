@@ -10,15 +10,17 @@ export class AuthServiceService {
   constructor() { }
   
 
-  setUser(token:string,name:string, role:string):void{
-    localStorage.setItem('token',token)
-    localStorage.setItem('name',name)
-    localStorage.setItem('role',role)
+  setUser(user:UserInterface):void{
+    localStorage.setItem('token',user.token)
+    localStorage.setItem('name',user.first_name)
+    localStorage.setItem('role',user.role)
+    localStorage.setItem('last_name',user.last_name)
   }
   removeUser():void{
     localStorage.removeItem('token')
     localStorage.removeItem('name')
     localStorage.removeItem('role')
+    localStorage.removeItem('last_name')
   }
   getUserData(data:string):string{
     return localStorage.getItem(data) || ''
