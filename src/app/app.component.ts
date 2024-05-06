@@ -4,6 +4,10 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './store/counter.reducer';
+
+
 
 
 

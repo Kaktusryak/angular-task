@@ -8,6 +8,8 @@ import {
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ReportComponent } from '../../components/report/report.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -20,8 +22,9 @@ export class DashboardComponent implements OnInit{
   router = inject(Router)
   authService = inject(AuthServiceService)
   http = inject(HttpClient)
-
+ 
   reports: any;
+  
   
 
   ngOnInit(): void {

@@ -4,6 +4,18 @@
             <h2 class="text-center pb-3">Dashboard page</h2>
         </div>
     </div>
+    <div class="row justify-content-center py-5">
+        <div class="col-md-5 btn-group">
+            <button class="btn btn-primary">INC</button>
+            <button class="btn btn-primary">DEC</button>
+            <button class="btn btn-primary">RES</button>
+        </div>
+    </div>
+    <div class="row justify-content-center py-5">
+        <div class="col-md-5 ">
+            Counter
+        </div>
+    </div>
     <div *ngIf="authService.getUserData('role')==='Admin'" class="row justify-content-center ">
         <div class="col-md-6 btn-group">
             <button class="btn btn-primary" (click)="handleAdminClick()">Admin page</button>
