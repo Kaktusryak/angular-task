@@ -40,7 +40,7 @@ export class AppComponent {
   ngOnInit():void{
     
     if(this.authService.getUserData('token')!==''){
-      this.store.dispatch(restore({user:this.authService.restoreUser()}))
+      this.store.dispatch(restore(this.authService.restoreUser()))
     }
     this.user$?.subscribe(data=>{
       console.log('Confirming user')
@@ -62,6 +62,9 @@ export class AppComponent {
 
   handleToDash():void{
     this.router.navigateByUrl('/dashboard')
+  }
+  handleToBeauty():void{
+    this.router.navigateByUrl('/beauty')
   }
 
 }

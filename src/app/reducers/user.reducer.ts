@@ -27,7 +27,7 @@ export const userReducer = createReducer(initialState,
             user:null
         }
     }),
-    on(restore,(state,{user})=>{
+    on(restore,(state,user)=>{
         return {
             ...state,
             user:user

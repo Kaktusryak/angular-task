@@ -6,4 +6,4 @@ export const login = createAction(
   props<{ user: UserInterface }>()
 );
 export const logout = createAction('[User] logout');
-export const restore = createAction('[User] restore',props<{user:UserInterface}>())
+export const restore = createAction('[User] restore',props<UserInterface>())
