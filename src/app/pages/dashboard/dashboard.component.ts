@@ -8,6 +8,12 @@ import {
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ReportComponent } from '../../components/report/report.component';
 import { Router } from '@angular/router';
+import { map, Observable, of, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { decrement, increment, reset } from '../../store/counter.actions';
+import { storeBoard } from '../../store/dashboard.actions';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -20,9 +26,29 @@ export class DashboardComponent implements OnInit{
   router = inject(Router)
   authService = inject(AuthServiceService)
   http = inject(HttpClient)
-
+  store = inject(Store)
   reports: any;
   
+  name$?:Observable<string>//ngrx study
+
+  data$?:Observable<any>
+
+  constructor(){
+    // this.store.select('user').subscribe(data=>{
+    //   console.log(data)
+    // })
+    this.data$ = this.store.select('dashboard')
+  }
+  
+  // onIncrement(){
+  //   this.store.dispatch(increment())
+  // }
+  // onDecrement(){
+  //   this.store.dispatch(decrement())
+  // }
+  // onReset(){
+  //   this.store.dispatch(reset())
+  // }
 
   ngOnInit(): void {
     this.http
@@ -30,6 +56,12 @@ export class DashboardComponent implements OnInit{
       .subscribe({
         next: (res) => {
           this.reports = res;
+          console.log(res)
+          for(let i in this.reports){
+            this.store.dispatch(storeBoard(this.reports[i]))
+          }
+          console.log('dash')
+          
         },
         error: () => {
           this.authService.removeUser()
