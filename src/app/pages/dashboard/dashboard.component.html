@@ -21,8 +21,19 @@
             <button class="btn btn-primary" (click)="handleAdminClick()">Admin page</button>
         </div>
     </div>
-    <div *ngIf="authService.getUserData('token')!=='' "
+
+    <!-- <div *ngIf="authService.getUserData('token')!=='' "
         class="row justify-content-center ">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <app-report *ngFor="let report of reports; index as i; first as isFirst" [id]="report.id"
+                    [name]="report.name" [active]="report.active" [users_resolved]="report.users_resolved"
+                    [image_url]="report.image_url"></app-report>
+            </ul>
+        </div>
+    </div> -->
+
+    <div *ngIf="data$|async as data" class="row justify-content-center ">
         <div class="col-md-6">
             <ul class="list-group">
                 <app-report *ngFor="let report of reports; index as i; first as isFirst" [id]="report.id"

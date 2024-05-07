@@ -17,7 +17,7 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
   counter:counterReducer,
   user:userReducer,
-  dasboard:dashboardReducer
+  dashboard:dashboardReducer
 };
 
 
