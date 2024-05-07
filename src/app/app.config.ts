@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptors } fro
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { provideStore } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 
 
@@ -16,6 +17,9 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     { provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true },
-    provideStore(reducers, { metaReducers })
+    provideStore(reducers, { metaReducers }),
+    provideStoreDevtools()
+    
+    
 ]
 };
